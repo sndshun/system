@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.grays2.system.mapper.UsersMapper">
+
+    <resultMap type="com.grays2.system.entity.Users" id="UsersMap">
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="username" column="username" jdbcType="VARCHAR"/>
+        <result property="password" column="password" jdbcType="VARCHAR"/>
+        <result property="userAlias" column="user_alias" jdbcType="VARCHAR"/>
+        <result property="isEnable" column="is_enable" jdbcType="INTEGER"/>
+        <result property="sex" column="sex" jdbcType="INTEGER"/>
+        <result property="cellPhoneNumber" column="cell_phone_number" jdbcType="VARCHAR"/>
+        <result property="address" column="address" jdbcType="VARCHAR"/>
+        <result property="entryDate" column="entry_date" jdbcType="VARCHAR"/>
+        <result property="lastLogin" column="last_login" jdbcType="VARCHAR"/>
+        <result property="email" column="email" jdbcType="VARCHAR"/>
+        <result property="isSuper" column="is_super" jdbcType="INTEGER"/>
+        <result property="remarks" column="remarks" jdbcType="VARCHAR"/>
+        <result property="isDelete" column="is_delete" jdbcType="INTEGER"/>
+        <result property="createUser" column="create_user" jdbcType="INTEGER"/>
+        <result property="updateUser" column="update_user" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    
+    <sql id="base_column">
+user_idusernamepassworduser_aliasis_enablesexcell_phone_numberaddressentry_datelast_loginemailis_superremarksis_deletecreate_userupdate_usercreate_timeupdate_time    </sql>
+
+    <!--用于粘贴复制-->
+    <select id="test" resultMap="UsersMap">
+        select
+user_idusernamepassworduser_aliasis_enablesexcell_phone_numberaddressentry_datelast_loginemailis_superremarksis_deletecreate_userupdate_usercreate_timeupdate_time
+        from system.users
+        <where>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="username != null and username != ''">
+                and username = #{username}
+            </if>
+            <if test="password != null and password != ''">
+                and password = #{password}
+            </if>
+            <if test="userAlias != null and userAlias != ''">
+                and user_alias = #{userAlias}
+            </if>
+            <if test="isEnable != null">
+                and is_enable = #{isEnable}
+            </if>
+            <if test="sex != null">
+                and sex = #{sex}
+            </if>
+            <if test="cellPhoneNumber != null and cellPhoneNumber != ''">
+                and cell_phone_number = #{cellPhoneNumber}
+            </if>
+            <if test="address != null and address != ''">
+                and address = #{address}
+            </if>
+            <if test="entryDate != null and entryDate != ''">
+                and entry_date = #{entryDate}
+            </if>
+            <if test="lastLogin != null and lastLogin != ''">
+                and last_login = #{lastLogin}
+            </if>
+            <if test="email != null and email != ''">
+                and email = #{email}
+            </if>
+            <if test="isSuper != null">
+                and is_super = #{isSuper}
+            </if>
+            <if test="remarks != null and remarks != ''">
+                and remarks = #{remarks}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete}
+            </if>
+            <if test="createUser != null">
+                and create_user = #{createUser}
+            </if>
+            <if test="updateUser != null">
+                and update_user = #{updateUser}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+   
+
+ 
+
+</mapper>
+

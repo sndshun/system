@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.grays2.system.mapper.SystemMapper">
+
+    <resultMap type="com.grays2.system.entity.System" id="SystemMap">
+        <result property="sysId" column="sys_id" jdbcType="INTEGER"/>
+        <result property="sysName" column="sys_name" jdbcType="VARCHAR"/>
+        <result property="sysCode" column="sys_code" jdbcType="VARCHAR"/>
+        <result property="isDelete" column="is_delete" jdbcType="INTEGER"/>
+        <result property="createUser" column="create_user" jdbcType="INTEGER"/>
+        <result property="updateUser" column="update_user" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    
+    <sql id="base_column">
+sys_idsys_namesys_codeis_deletecreate_userupdate_usercreate_timeupdate_time    </sql>
+
+    <!--用于粘贴复制-->
+    <select id="test" resultMap="SystemMap">
+        select
+sys_idsys_namesys_codeis_deletecreate_userupdate_usercreate_timeupdate_time
+        from system.system
+        <where>
+            <if test="sysId != null">
+                and sys_id = #{sysId}
+            </if>
+            <if test="sysName != null and sysName != ''">
+                and sys_name = #{sysName}
+            </if>
+            <if test="sysCode != null and sysCode != ''">
+                and sys_code = #{sysCode}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete}
+            </if>
+            <if test="createUser != null">
+                and create_user = #{createUser}
+            </if>
+            <if test="updateUser != null">
+                and update_user = #{updateUser}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+   
+
+ 
+
+</mapper>
+

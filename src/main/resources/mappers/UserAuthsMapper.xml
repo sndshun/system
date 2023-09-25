@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.grays2.system.mapper.UserAuthsMapper">
+
+    <resultMap type="com.grays2.system.entity.UserAuths" id="UserAuthsMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="identityType" column="identity_type" jdbcType="VARCHAR"/>
+        <result property="identifier" column="identifier" jdbcType="VARCHAR"/>
+        <result property="credential" column="credential" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    
+    <sql id="base_column">
+iduser_ididentity_typeidentifiercredentialupdate_timecreate_time    </sql>
+
+    <!--用于粘贴复制-->
+    <select id="test" resultMap="UserAuthsMap">
+        select
+iduser_ididentity_typeidentifiercredentialupdate_timecreate_time
+        from system.user_auths
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="identityType != null and identityType != ''">
+                and identity_type = #{identityType}
+            </if>
+            <if test="identifier != null and identifier != ''">
+                and identifier = #{identifier}
+            </if>
+            <if test="credential != null and credential != ''">
+                and credential = #{credential}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+        </where>
+    </select>
+
+   
+
+ 
+
+</mapper>
+

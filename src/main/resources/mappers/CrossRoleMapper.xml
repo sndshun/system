@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.grays2.system.mapper.CrossRoleMapper">
+
+    <resultMap type="com.grays2.system.entity.CrossRole" id="CrossRoleMap">
+        <result property="crossId" column="cross_id" jdbcType="INTEGER"/>
+        <result property="roleId" column="role_id" jdbcType="INTEGER"/>
+        <result property="crossType" column="cross_type" jdbcType="INTEGER"/>
+        <result property="crossName" column="cross_name" jdbcType="VARCHAR"/>
+        <result property="roleName" column="role_name" jdbcType="VARCHAR"/>
+        <result property="sysCode" column="sys_code" jdbcType="VARCHAR"/>
+        <result property="isDelete" column="is_delete" jdbcType="INTEGER"/>
+        <result property="createUser" column="create_user" jdbcType="INTEGER"/>
+        <result property="updateUser" column="update_user" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    
+    <sql id="base_column">
+cross_idrole_idcross_typecross_namerole_namesys_codeis_deletecreate_userupdate_usercreate_timeupdate_time    </sql>
+
+    <!--用于粘贴复制-->
+    <select id="test" resultMap="CrossRoleMap">
+        select
+cross_idrole_idcross_typecross_namerole_namesys_codeis_deletecreate_userupdate_usercreate_timeupdate_time
+        from system.cross_role
+        <where>
+            <if test="crossId != null">
+                and cross_id = #{crossId}
+            </if>
+            <if test="roleId != null">
+                and role_id = #{roleId}
+            </if>
+            <if test="crossType != null">
+                and cross_type = #{crossType}
+            </if>
+            <if test="crossName != null and crossName != ''">
+                and cross_name = #{crossName}
+            </if>
+            <if test="roleName != null and roleName != ''">
+                and role_name = #{roleName}
+            </if>
+            <if test="sysCode != null and sysCode != ''">
+                and sys_code = #{sysCode}
+            </if>
+            <if test="isDelete != null">
+                and is_delete = #{isDelete}
+            </if>
+            <if test="createUser != null">
+                and create_user = #{createUser}
+            </if>
+            <if test="updateUser != null">
+                and update_user = #{updateUser}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="updateTime != null">
+                and update_time = #{updateTime}
+            </if>
+        </where>
+    </select>
+
+   
+
+ 
+
+</mapper>
+
