@@ -3,7 +3,6 @@ package com.grays2.system.entity;
 
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import java.io.Serializable;
@@ -11,21 +10,25 @@ import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableId;
 
 /**
  * 职位表(Post)表实体类
  *
  * @author sndshun
- * @since 2023-09-26 04:19:12
+ * @since 2023-09-27 06:27:47
  */
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("post")
 public class PostEntity extends Model<PostEntity> {
     /**
      * 职位ID
      */
+
     @TableId
     private Integer postId;
     /**

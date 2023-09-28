@@ -47,7 +47,7 @@ public class R<T> implements Serializable {
     * @return
     */
    public static<T> R<T> ok(ResultCode resultCode,T data){
-      R<T> r = new R<T>(resultCode.SUCCESS.getCode(),resultCode.SUCCESS.getMsg(),data);
+      R<T> r = new R<T>(resultCode.getCode(),resultCode.getMsg(),data);
       return r;
    }
    /**
@@ -59,6 +59,12 @@ public class R<T> implements Serializable {
       R r = new R();
       r.setCode(resultCode.getCode());
       r.setMessage(resultCode.getMsg());
+      return r;
+   }
+   public static R error(ResultCode resultCode,String message){
+      R r = new R();
+      r.setCode(resultCode.getCode());
+      r.setMessage(message);
       return r;
    }
    /**

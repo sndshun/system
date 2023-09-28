@@ -35,7 +35,7 @@ public class UsersController {
      * @return 所有数据
      */
     @GetMapping
-    public R<?> selectAll(Page<UsersEntity> page, UsersEntity users) {
+    public R<Page<UsersEntity>> selectAll(Page<UsersEntity> page, UsersEntity users) {
         return R.ok(this.usersService.page(page, new QueryWrapper<>(users)));
     }
 

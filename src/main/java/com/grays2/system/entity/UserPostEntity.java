@@ -3,8 +3,6 @@ package com.grays2.system.entity;
 
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import java.io.Serializable;
@@ -12,26 +10,31 @@ import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableId;
 
 /**
  * 用户-职位-关联表(UserPost)表实体类
  *
  * @author sndshun
- * @since 2023-09-26 04:19:12
+ * @since 2023-09-27 06:27:47
  */
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("user_post")
 public class UserPostEntity extends Model<UserPostEntity> {
     /**
      * 用户ID
      */
-    @TableId(type = IdType.INPUT)
+
+    @TableId
     private Integer userId;
     /**
      * 职位ID
      */
+
     private Integer postId;
     /**
      * 逻辑删除（0：正常 1：删除）

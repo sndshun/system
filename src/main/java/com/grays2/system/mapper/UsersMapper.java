@@ -2,10 +2,6 @@ package com.grays2.system.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.grays2.system.entity.UsersEntity;
-import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
-
-import javax.annotation.Resources;
 
 /**
  * 用户表(Users)表数据库访问层

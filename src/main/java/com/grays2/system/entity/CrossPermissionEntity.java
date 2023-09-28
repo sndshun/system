@@ -3,8 +3,6 @@ package com.grays2.system.entity;
 
 import java.util.Date;
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.extension.activerecord.Model;
 
 import java.io.Serializable;
@@ -12,26 +10,31 @@ import java.io.Serializable;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.TableId;
 
 /**
  * 跨权限映射表(CrossPermission)表实体类
  *
  * @author sndshun
- * @since 2023-09-26 04:19:12
+ * @since 2023-09-27 06:27:46
  */
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@TableName("cross_permission")
 public class CrossPermissionEntity extends Model<CrossPermissionEntity> {
     /**
      * 跨权限者的ID
      */
-    @TableId(type = IdType.INPUT)
+
+    @TableId
     private Integer crossId;
     /**
      * 被跨越的权限ID
      */
+
     private Integer permissionId;
     /**
      * 1：用户 2：用户组 3：职位 4：组织
