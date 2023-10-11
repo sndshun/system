@@ -1,3 +1,11 @@
+custom:
+  jwt:
+    expire-time: 172800000 #jwt-token失效时间 1000 * 60 * 60 * 24 * 2
+    # 盐值
+    secret: 7DekC0RVQUrTu1pYJ5bkGn22rMdSc4L7
+  token:
+    token-header: Authorization         #请求头中携带token的参数名
+    expire-time: 21600000     #Redis中token存储时间 1000 * 60 * 60 * 6
 spring:
   application:
     name: system
@@ -33,4 +41,3 @@ mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   mapper-locations: classpath:mappers/*.xml
-

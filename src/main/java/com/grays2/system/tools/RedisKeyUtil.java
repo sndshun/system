@@ -42,7 +42,27 @@ public class RedisKeyUtil {
         StringBuffer buffer = new StringBuffer();
         buffer.append(tableName).append(":");
         buffer.append(majorKey).append(":");
-        buffer.append(majorKeyValue).append(":");
+        buffer.append(majorKeyValue);
+        return buffer.toString();
+    }
+
+    /**
+     * redis的key
+     * 形式为：
+     * 前缀:表名:主键名:主键值
+     *
+     * @param prefix 前缀
+     * @param tableName 表名
+     * @param majorKey 主键名
+     * @param majorKeyValue 主键值
+     * @return
+     */
+    public static String getKey_(String prefix,String tableName,String majorKey,String majorKeyValue){
+        StringBuffer buffer = new StringBuffer();
+        buffer.append(prefix).append(":");
+        buffer.append(tableName).append(":");
+        buffer.append(majorKey).append(":");
+        buffer.append(majorKeyValue);
         return buffer.toString();
     }
 }

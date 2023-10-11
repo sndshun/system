@@ -1,6 +1,29 @@
 spring:
   profiles:
     active: dev
+  #jackson
+  jackson:
+    #日期格式化
+    date-format: yyyy-MM-dd HH:mm:ss
+    #时区
+    time-zone: GMT+8
+    serialization:
+      #格式化输出
+      indent-output: true
+      #忽略无法转换的对象
+      fail-on-empty-beans: false
+    #设置空如何序列化
+    default-property-inclusion: non_null #属性为NULL 不序列化
+    deserialization:
+      #允许对象忽略json中不存在的属性
+      fail-on-unknown-properties: false
+    parser:
+      #允许出现特殊字符和转义符
+      allow-unquoted-control-chars: true
+      #允许出现单引号
+      allow-single-quotes: true
+      #允许字段名没有引号（可以进一步减小json体积）
+      allow-unquoted-field-names: true
 server:
   port: 8081
 

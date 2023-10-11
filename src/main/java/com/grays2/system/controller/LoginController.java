@@ -4,10 +4,15 @@ import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.grays2.system.config.ResultCode;
 import com.grays2.system.entity.UserAuthsEntity;
 import com.grays2.system.entity.UsersEntity;
+import com.grays2.system.jwt.JwtUtil;
 import com.grays2.system.pojo.body.AdminUserLoginBody;
+import com.grays2.system.pojo.dto.UserAuthorizationInfoDto;
 import com.grays2.system.service.UserAuthsService;
 import com.grays2.system.service.UsersService;
 import com.grays2.system.tools.R;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
+import org.springframework.beans.BeanUtils;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,11 +54,18 @@ public class LoginController {
             return R.error(ResultCode.USER_LOGIN_ERROR);
         }
         UsersEntity usersEntity = usersService.getById(userAuthsEntity.getUserId());
-        if (null != usersEntity && usersEntity.getIsEnable() == 0) {
+        if (null == usersEntity || usersEntity.getIsEnable() == 0) {
             return R.error(ResultCode.USER_ACCOUNT_FORBIDDEN);
         }
 
+        String token = JwtUtil.sign(usersEntity.getUserId(), loginBody.getUsername(), loginBody.getPassword());
+        UserAuthorizationInfoDto userAuthorizationInfoDto=new UserAuthorizationInfoDto();
+        BeanUtils.copyProperties(usersEntity,userAuthorizationInfoDto);
+        userAuthorizationInfoDto.setToken(token);
 
-        return R.ok(usersEntity);
+        // redis
+        usersService.setUserAuthorizationInfo(userAuthorizationInfoDto.getUserId(), userAuthorizationInfoDto);
+
+        return R.ok(userAuthorizationInfoDto);
     }
 }
